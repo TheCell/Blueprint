@@ -27,7 +27,6 @@ public class UnitBasics : MonoBehaviour
 			if (floorTile != null)
 			{
 				newposition = floorTile.GetNextPosition(moveTo);
-				Debug.Log(newposition);
 			}
 		}
 		else
