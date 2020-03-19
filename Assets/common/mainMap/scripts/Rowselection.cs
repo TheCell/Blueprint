@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Rowselection : MonoBehaviour
 {
-    private void Start()
+	[SerializeField] private Direction moveDirection;
+
+	private void Start()
     {
 		PushAllObjects();
 	}
@@ -27,7 +29,7 @@ public class Rowselection : MonoBehaviour
 			UnitBasics unitBasics = rayHits[i].collider.GetComponent<UnitBasics>();
 			if (unitBasics != null)
 			{
-				unitBasics.MoveToDirection(Direction.South);
+				unitBasics.MoveToDirection(moveDirection);
 			}
 		}
 	}
