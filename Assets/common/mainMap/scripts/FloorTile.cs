@@ -7,46 +7,94 @@ public class FloorTile : MonoBehaviour
 
     private void Start()
     {
+    
+        Vector3 vecOrigin = transform.position;
+        vecOrigin.y -= 0.1f;
+
         RaycastHit hit;
         RaycastHit[] hits;
-        if(Physics.Raycast(transform.position ,Vector3.forward, out hit, 2.0f))
+        if(Physics.Raycast(vecOrigin ,Vector3.forward, out hit, 2.0f))
         {
             surroundingPositions[0] = hit.collider.gameObject.transform.position;
         }
         else
         {
-            hits = Physics.RaycastAll(transform.position, Vector3.back);
-            surroundingPositions[0] = hits[hits.Length - 1].collider.gameObject.transform.position;
+            hits = Physics.RaycastAll(vecOrigin, Vector3.back);
+            Vector3 lastElem = transform.position;
+
+            for(int i = 0; i < hits.Length; i++)
+            {
+                if(lastElem.z > hits[i].collider.gameObject.transform.position.z)
+                {
+                    lastElem.z = hits[i].collider.gameObject.transform.position.z;
+                }
+            }
+
+            surroundingPositions[0] = lastElem;
+
+
         }
 
-        if (Physics.Raycast(transform.position, Vector3.right, out hit, 2.0f))
+        if (Physics.Raycast(vecOrigin, Vector3.right, out hit, 2.0f))
         {
             surroundingPositions[1] = hit.collider.gameObject.transform.position;
         }
         else
         {
-            hits = Physics.RaycastAll(transform.position, Vector3.back);
-            surroundingPositions[1] = hits[hits.Length - 1].collider.gameObject.transform.position;
+            hits = Physics.RaycastAll(vecOrigin, Vector3.left);
+            Vector3 lastElem = transform.position;
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (lastElem.x > hits[i].collider.gameObject.transform.position.x)
+                {
+                    lastElem.x = hits[i].collider.gameObject.transform.position.x;
+                }
+            }
+
+            surroundingPositions[0] = lastElem;
+
         }
 
-        if (Physics.Raycast(transform.position, Vector3.back, out hit, 2.0f))
+        if (Physics.Raycast(vecOrigin, Vector3.back, out hit, 2.0f))
         {
             surroundingPositions[2] = hit.collider.gameObject.transform.position;
         }
         else
         {
-            hits = Physics.RaycastAll(transform.position, Vector3.back);
-            surroundingPositions[2] = hits[hits.Length - 1].collider.gameObject.transform.position;
+            hits = Physics.RaycastAll(vecOrigin, Vector3.forward);
+            Vector3 lastElem = transform.position;
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (lastElem.z < hits[i].collider.gameObject.transform.position.z)
+                {
+                    lastElem.z = hits[i].collider.gameObject.transform.position.z;
+                }
+            }
+
+            surroundingPositions[0] = lastElem;
+
         }
 
-        if (Physics.Raycast(transform.position, Vector3.left, out hit, 2.0f))
+        if (Physics.Raycast(vecOrigin, Vector3.left, out hit, 2.0f))
         {
             surroundingPositions[3] = hit.collider.gameObject.transform.position;
         }
         else
         {
-            hits = Physics.RaycastAll(transform.position, Vector3.back);
-            surroundingPositions[3] = hits[hits.Length - 1].collider.gameObject.transform.position;
+            hits = Physics.RaycastAll(vecOrigin, Vector3.right);
+            Vector3 lastElem = transform.position;
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (lastElem.x < hits[i].collider.gameObject.transform.position.x)
+                {
+                    lastElem.x = hits[i].collider.gameObject.transform.position.x;
+                }
+            }
+
+            surroundingPositions[0] = lastElem;
         }
     }
 
@@ -56,19 +104,14 @@ public class FloorTile : MonoBehaviour
         {
             case Direction.North:
                 return surroundingPositions[0];
-                break;
             case Direction.East:
                 return surroundingPositions[1];
-                break;
             case Direction.South:
                 return surroundingPositions[2];
-                break;
             case Direction.West:
                 return surroundingPositions[3];
-                break;
             default:
                 return Vector3.zero;
-                break;
         }
     }
 }
