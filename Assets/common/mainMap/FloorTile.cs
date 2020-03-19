@@ -8,21 +8,45 @@ public class FloorTile : MonoBehaviour
     private void Start()
     {
         RaycastHit hit;
+        RaycastHit[] hits;
         if(Physics.Raycast(transform.position ,Vector3.forward, out hit, 2.0f))
         {
             surroundingPositions[0] = hit.collider.gameObject.transform.position;
         }
+        else
+        {
+            hits = Physics.RaycastAll(transform.position, Vector3.back);
+            surroundingPositions[0] = hits[hits.Length - 1].collider.gameObject.transform.position;
+        }
+
         if (Physics.Raycast(transform.position, Vector3.right, out hit, 2.0f))
         {
             surroundingPositions[1] = hit.collider.gameObject.transform.position;
         }
+        else
+        {
+            hits = Physics.RaycastAll(transform.position, Vector3.back);
+            surroundingPositions[1] = hits[hits.Length - 1].collider.gameObject.transform.position;
+        }
+
         if (Physics.Raycast(transform.position, Vector3.back, out hit, 2.0f))
         {
             surroundingPositions[2] = hit.collider.gameObject.transform.position;
         }
+        else
+        {
+            hits = Physics.RaycastAll(transform.position, Vector3.back);
+            surroundingPositions[2] = hits[hits.Length - 1].collider.gameObject.transform.position;
+        }
+
         if (Physics.Raycast(transform.position, Vector3.left, out hit, 2.0f))
         {
             surroundingPositions[3] = hit.collider.gameObject.transform.position;
+        }
+        else
+        {
+            hits = Physics.RaycastAll(transform.position, Vector3.back);
+            surroundingPositions[3] = hits[hits.Length - 1].collider.gameObject.transform.position;
         }
     }
 
