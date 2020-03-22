@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UnitBasics : MonoBehaviour
 {
+
+    public int healthPoints;
+
     private void Start()
     {
         
@@ -14,7 +17,16 @@ public class UnitBasics : MonoBehaviour
         
     }
 
-	public void MoveToDirection(Direction moveTo)
+    public void TakeDamage(int dmgAmount)
+    {
+        healthPoints -= dmgAmount;
+        if(healthPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void MoveToDirection(Direction moveTo)
 	{
 		RaycastHit rayhit;
 		Vector3 newposition = Vector3.zero;

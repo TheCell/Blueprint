@@ -17,7 +17,8 @@ public class Rowselection : MonoBehaviour
         while (!donThis)
 		{
 			donThis = true;
-			PushAllObjects();
+            PushAllObjects();
+            //DamageAllObjects(1);
 		}
     }
 
@@ -38,4 +39,22 @@ public class Rowselection : MonoBehaviour
 			}
 		}
 	}
+
+    private void DamageAllObjects(int dmgAmount)
+    {
+        RaycastHit[] rayHits;
+        Vector3 rayStart = transform.position;
+        rayStart.y += 1; // set to middle of the object height
+
+        Ray ray = new Ray(rayStart, -transform.right);
+        rayHits = Physics.RaycastAll(ray);
+        for (int i = 0; i < rayHits.Length; i++)
+        {
+            UnitBasics unitBasics = rayHits[i].collider.GetComponent<UnitBasics>();
+            if (unitBasics != null)
+            {
+                unitBasics.TakeDamage(dmgAmount);
+            }
+        }
+    }
 }
