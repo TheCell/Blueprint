@@ -5,15 +5,20 @@ using UnityEngine;
 public class Rowselection : MonoBehaviour
 {
 	[SerializeField] private Direction moveDirection;
+	private bool donThis = false;
 
 	private void Start()
     {
-		PushAllObjects();
+		
 	}
 
     private void Update()
     {
-        
+        while (!donThis)
+		{
+			donThis = true;
+			PushAllObjects();
+		}
     }
 
 	private void PushAllObjects()

@@ -7,13 +7,12 @@ public class FloorTile : MonoBehaviour
 
     private void Start()
     {
-    
         Vector3 vecOrigin = transform.position;
         vecOrigin.y -= 0.1f;
 
         RaycastHit hit;
         RaycastHit[] hits;
-        if(Physics.Raycast(vecOrigin ,Vector3.forward, out hit, 2.0f))
+        if(Physics.Raycast(vecOrigin, Vector3.forward, out hit, 2.0f))
         {
             surroundingPositions[0] = hit.collider.gameObject.transform.position;
         }
@@ -52,7 +51,7 @@ public class FloorTile : MonoBehaviour
                 }
             }
 
-            surroundingPositions[0] = lastElem;
+            surroundingPositions[1] = lastElem;
 
         }
 
@@ -73,7 +72,7 @@ public class FloorTile : MonoBehaviour
                 }
             }
 
-            surroundingPositions[0] = lastElem;
+            surroundingPositions[2] = lastElem;
 
         }
 
@@ -94,20 +93,20 @@ public class FloorTile : MonoBehaviour
                 }
             }
 
-            surroundingPositions[0] = lastElem;
-        }
-    }
+            surroundingPositions[3] = lastElem;
+		}
+	}
 
     public Vector3 GetNextPosition(Direction direction)
     {
-        switch(direction)
+		switch (direction)
         {
             case Direction.North:
                 return surroundingPositions[0];
             case Direction.East:
                 return surroundingPositions[1];
             case Direction.South:
-                return surroundingPositions[2];
+				return surroundingPositions[2];
             case Direction.West:
                 return surroundingPositions[3];
             default:
