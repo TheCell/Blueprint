@@ -5,22 +5,27 @@ using UnityEngine;
 public class Rowselection : MonoBehaviour
 {
 	[SerializeField] private Direction moveDirection;
-	private bool donThis = false;
 
 	private void Start()
     {
-		
+
 	}
 
     private void Update()
     {
-        while (!donThis)
-		{
-			donThis = true;
-			PushAllObjects();
-		}
+
     }
 
+	private void OnMouseEnter()
+	{
+		HighlightSelection(true);
+	}
+
+	private void OnMouseExit()
+	{
+		HighlightSelection(false);
+	}
+	
 	private void PushAllObjects()
 	{
 		RaycastHit[] rayHits;
@@ -35,6 +40,23 @@ public class Rowselection : MonoBehaviour
 			if (unitBasics != null)
 			{
 				unitBasics.MoveToDirection(moveDirection);
+			}
+		}
+	}
+
+	private void HighlightSelection(bool isActive)
+	{
+		RaycastHit[] rayHits;
+		Vector3 rayStart = transform.position;
+
+		Ray ray = new Ray(rayStart, -transform.right);
+		rayHits = Physics.RaycastAll(ray);
+		for (int i = 0; i < rayHits.Length; i++)
+		{
+			SelectionHighlight floorToHighlite = rayHits[i].collider.GetComponent<SelectionHighlight>();
+			if (floorToHighlite != null)
+			{
+				floorToHighlite.SetHighlight(isActive);
 			}
 		}
 	}
