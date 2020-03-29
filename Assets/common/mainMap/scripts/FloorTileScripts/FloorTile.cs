@@ -5,6 +5,7 @@ public class FloorTile : MonoBehaviour
 {
     private Vector3[] surroundingPositions = new Vector3[4];
 
+
     private void Start()
     {
         Vector3 vecOrigin = transform.position;
