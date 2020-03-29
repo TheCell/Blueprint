@@ -9,11 +9,7 @@ public class Rowselector : MonoBehaviour
 
 	private void Start()
     {
-		playerInputManager = GameObject.FindObjectOfType<PlayerInputManager>();
-		if (playerInputManager != null)
-		{
-			//Debug.Log(playerInputManager.name + " " + playerInputManager.playerCount);
-		}
+		playerInputManager = PlayerInputManager.instance;
     }
 
     private void Update()

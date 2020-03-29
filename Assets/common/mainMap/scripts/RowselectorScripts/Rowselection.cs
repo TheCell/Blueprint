@@ -1,29 +1,70 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Rowselection : MonoBehaviour
 {
 	[SerializeField] private Direction moveDirection;
+	[SerializeField] private bool isSelected;
+	private SelectorInfos selectorInfos;
 
-	private void Start()
-    {
-
+	public bool IsSelected
+	{
+		get
+		{
+			return isSelected;
+		}
+		set
+		{
+			isSelected = value;
+			if (value)
+			{
+				HighlightSelection(true);
+			}
+			else
+			{
+				HighlightSelection(false);
+			}
+		}
 	}
 
-    private void Update()
-    {
-
-    }
+	private void Start()
+	{
+		selectorInfos = gameObject.GetComponent<SelectorInfos>();
+	}
 
 	private void OnMouseEnter()
 	{
-		HighlightSelection(true);
+		IsSelected = true;
 	}
 
 	private void OnMouseExit()
 	{
-		HighlightSelection(false);
+		IsSelected = false;
+	}
+
+	private void OnMove(InputValue value)
+	{
+		if (!IsSelected)
+		{
+			return;
+		}
+
+		Vector2 direction = value.Get<Vector2>();
+
+		if (direction.x > 0.1f)
+		{
+			IsSelected = false;
+			SelectorInfos rightSelector = selectorInfos.GetRightSelector();
+			rightSelector.GetRowselection().IsSelected = true;
+		}
+		else if (direction.x < -0.1f)
+		{
+			IsSelected = false;
+			SelectorInfos leftSelector = selectorInfos.GetLeftSelector();
+			leftSelector.GetRowselection().IsSelected = true;
+		}
 	}
 
 	private void PushAllObjects()
