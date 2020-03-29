@@ -20,7 +20,6 @@ public class ObstacleSpawn : MonoBehaviour
             Vector3 spawnPosition = floorTiles[randomIndex].transform.position;
             Instantiate(prefab, spawnPosition, Quaternion.Euler(-90, 0, 0));
             floorTiles.RemoveAt(randomIndex);
-            Debug.Log(floorTiles.Count);
         }
     }
 
