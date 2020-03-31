@@ -7,6 +7,7 @@ public class Rowselection : MonoBehaviour
 {
 	[SerializeField] private Direction moveDirection;
 	[SerializeField] private bool isSelected;
+	[SerializeField] private SelectionHighlight[] highlightParts;
 	private SelectorInfos selectorInfos;
 
 	public bool IsSelected
@@ -99,6 +100,12 @@ public class Rowselection : MonoBehaviour
 			{
 				floorToHighlite.SetHighlight(isActive);
 			}
+		}
+
+		// highlight selector parts
+		for (int i = 0; i < highlightParts.Length; i++)
+		{
+			highlightParts[i].SetHighlight(isActive);
 		}
 	}
 

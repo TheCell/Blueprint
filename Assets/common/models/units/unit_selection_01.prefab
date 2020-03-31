@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1439431611919391730}
   - component: {fileID: 4392435799414758622}
   - component: {fileID: 8150033613704964278}
+  - component: {fileID: 3646918715448845758}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3646918715448845758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858511083680443558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f01ed594bc3e74fa36759f4dfc9a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4206069347806379170
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: 0
+  isSelected: 0
+  highlightParts:
+  - {fileID: 2747216967094479020}
+  - {fileID: 3646918715448845758}
 --- !u!65 &8296172668141395199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -196,6 +213,7 @@ GameObject:
   - component: {fileID: 249705595399189013}
   - component: {fileID: 2863071587078518573}
   - component: {fileID: 1423730086259564869}
+  - component: {fileID: 2747216967094479020}
   m_Layer: 0
   m_Name: Cone
   m_TagString: Untagged
@@ -266,3 +284,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2747216967094479020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371084763094132966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f01ed594bc3e74fa36759f4dfc9a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
