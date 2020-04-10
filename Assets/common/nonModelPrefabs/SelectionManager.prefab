@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908394918099749054}
   - component: {fileID: 908394918099749055}
+  - component: {fileID: 2135563208196492788}
   m_Layer: 0
   m_Name: SelectionManager
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 2
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -64,7 +65,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 0}
+  m_PlayerPrefab: {fileID: 5570816897072123088, guid: ca3171a42c3e06c47ad8abaef51c8f37, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -74,3 +75,15 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &2135563208196492788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908394918099749053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8aad57e74234a4594d6cd9abf0d403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
