@@ -5,11 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Rowselector : MonoBehaviour
 {
-	private PlayerInputManager playerInputManager;
-
 	private void Start()
     {
-		playerInputManager = PlayerInputManager.instance;
+
     }
 
     private void Update()
