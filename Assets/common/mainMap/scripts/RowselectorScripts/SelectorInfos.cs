@@ -38,7 +38,10 @@ public class SelectorInfos : MonoBehaviour
 
 	private SelectorInfos GetSelector(bool getRightSelector)
 	{
-		SelectorInfos leftSelector = new SelectorInfos();
+		SelectorInfos leftSelector;
+		// no other selectors found, taking myself as reference
+		leftSelector = this;
+
 		RaycastHit rayHit;
 		Vector3 origin = transform.position;
 		origin.y += 1;
@@ -74,10 +77,6 @@ public class SelectorInfos : MonoBehaviour
 			{
 				Debug.LogError("found object but is not SelectorInfos");
 			}
-		}
-		else // no other selectors found, taking myself as reference
-		{
-			leftSelector = this;
 		}
 
 		return leftSelector;
