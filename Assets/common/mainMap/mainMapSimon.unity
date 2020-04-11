@@ -794,17 +794,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 866287694219480753, guid: 6f36190817839874db03f8c343673f46, type: 3}
   m_PrefabInstance: {fileID: 1771789057}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &485644154 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2135563208196492788, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-  m_PrefabInstance: {fileID: 908394918089213504}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8aad57e74234a4594d6cd9abf0d403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &488325027 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2923790037656060727, guid: 55bb9e8716e2e4454bc0763fc5a114ea, type: 3}
@@ -3460,50 +3449,6 @@ PrefabInstance:
     - target: {fileID: 908394918099749054, guid: b51f9d2545752124ca31bc0376093413, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_JoinBehavior
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_AllowJoining
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_MaxPlayerCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_NotificationBehavior
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 485644154}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SwitchRounds, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayerJoined
-      objectReference: {fileID: 0}
-    - target: {fileID: 908394918099749055, guid: b51f9d2545752124ca31bc0376093413, type: 3}
-      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b51f9d2545752124ca31bc0376093413, type: 3}
