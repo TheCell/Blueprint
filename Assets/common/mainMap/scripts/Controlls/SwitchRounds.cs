@@ -8,16 +8,26 @@ public class SwitchRounds : MonoBehaviour
 	private List<PlayerInput> playerInputs;
 	private PlayerInputManager playerManager;
 
-
 	public void PlayerJoined(PlayerInput input)
 	{
-		input.onActionTriggered += Input_onActionTriggered;
+		//Debug.Log(input.currentActionMap.actions);
+		//input.onActionTriggered += Input_onActionTriggered; // not working for now
+
+		for (int i = 0; i < input.currentActionMap.actions.Count; i++)
+		{
+			//Debug.Log(input.currentActionMap.actions[i].name);
+			if (input.currentActionMap.actions[i].name == "Fire")
+			{
+				input.currentActionMap.actions[i].performed += SwitchRounds_performed;
+			}
+		}
 		playerInputs.Add(input);
 	}
 
 	public void PlayerLeft(PlayerInput input)
 	{
-		input.onActionTriggered -= Input_onActionTriggered;
+		//input.onActionTriggered -= Input_onActionTriggered;
+		// TODO remove the listener again
 		playerInputs.Remove(input);
 	}
 
@@ -38,17 +48,22 @@ public class SwitchRounds : MonoBehaviour
 		//}
 	}
 
-	private void Input_onActionTriggered(InputAction.CallbackContext obj)
+	//private void Input_onActionTriggered(InputAction.CallbackContext obj)
+	//{
+	//	Debug.Log("input action triggered");
+	//	Debug.Log(obj.valueType);
+	//	SwitchPlayer();
+	//  // TODO this should check if a final turn action was performed and switch player
+	//}
+
+	private void SwitchRounds_performed(InputAction.CallbackContext obj)
 	{
-		Debug.Log("input action triggered");
-		Debug.Log(obj.valueType);
 		SwitchPlayer();
-		// TODO this should check if a final turn action was performed and switch player
-		//throw new System.NotImplementedException();
 	}
 
 	private void SwitchPlayer()
 	{
+		Debug.Log("Switching player");
 		bool previousWasEnabled = false;
 		bool switchedOneOn = false;
 
@@ -56,20 +71,20 @@ public class SwitchRounds : MonoBehaviour
 		{
 			if (previousWasEnabled && !switchedOneOn)
 			{
-				playerInputs[i].enabled = true;
+				playerInputs[i].ActivateInput();
 				previousWasEnabled = false;
 				switchedOneOn = true;
 			}
 			else
 			{
-				previousWasEnabled = playerInputs[i].enabled;
-				playerInputs[i].enabled = false;
+				previousWasEnabled = playerInputs[i].inputIsActive;
+				playerInputs[i].DeactivateInput();
 			}
 		}
 
 		if (!switchedOneOn && playerInputs.Count > 0)
 		{
-			playerInputs[0].enabled = true;
+			playerInputs[0].ActivateInput();
 		}
 	}
 }
