@@ -12,21 +12,26 @@ public class SwitchRounds : MonoBehaviour
 	private void Start()
 	{
 		playerManager = PlayerInputManager.instance;
-		playerManager.onPlayerJoined += PlayerManager_onPlayerJoined;
-		playerManager.onPlayerLeft += PlayerManager_onPlayerLeft;
+		//playerManager.onPlayerJoined += PlayerManager_onPlayerJoined;
+		//playerManager.onPlayerLeft += PlayerManager_onPlayerLeft;
 	}
 
-	private void PlayerManager_onPlayerLeft(PlayerInput obj)
+	public void PlayerJoined()
 	{
-		Debug.Log(obj.name + " left");
-		throw new System.NotImplementedException();
+		Debug.Log("player joined test");
 	}
 
-	private void PlayerManager_onPlayerJoined(PlayerInput obj)
-	{
-		Debug.Log(obj.name + " joined");
-		throw new System.NotImplementedException();
-	}
+	//private void PlayerManager_onPlayerJoined(PlayerInput obj)
+	//{
+	//	Debug.Log(obj.name + " joined");
+	//	throw new System.NotImplementedException();
+	//}
+
+	//private void PlayerManager_onPlayerLeft(PlayerInput obj)
+	//{
+	//	Debug.Log(obj.name + " left");
+	//	throw new System.NotImplementedException();
+	//}
 
 	private void Player_onActionTriggered(InputAction.CallbackContext obj)
 	{
