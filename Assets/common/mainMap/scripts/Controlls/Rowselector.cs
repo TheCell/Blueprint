@@ -17,7 +17,7 @@ public class Rowselector : MonoBehaviour
 
 	private void OnMove()
 	{
-		Debug.Log(gameObject.name + ": I'm OnMove");
+		//Debug.Log(gameObject.name + ": I'm OnMove");
 	}
 
 	private void OnFire()

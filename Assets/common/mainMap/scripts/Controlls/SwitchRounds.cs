@@ -9,51 +9,42 @@ public class SwitchRounds : MonoBehaviour
 	private PlayerInputManager playerManager;
 
 
+	public void PlayerJoined(PlayerInput input)
+	{
+		input.onActionTriggered += Input_onActionTriggered;
+		playerInputs.Add(input);
+	}
+
+	public void PlayerLeft(PlayerInput input)
+	{
+		input.onActionTriggered -= Input_onActionTriggered;
+		playerInputs.Remove(input);
+	}
+
 	private void Start()
 	{
 		playerManager = PlayerInputManager.instance;
+		playerInputs = new List<PlayerInput>();
+		// use manual reference until unity fixed this
 		//playerManager.onPlayerJoined += PlayerManager_onPlayerJoined;
 		//playerManager.onPlayerLeft += PlayerManager_onPlayerLeft;
 	}
 
-	public void PlayerJoined()
+	private void Update()
 	{
-		Debug.Log("player joined test");
+		//for (int i = 0; i < playerInputs.Count; i++)
+		//{
+		//	Debug.Log(playerInputs[i].actions);
+		//}
 	}
 
-	//private void PlayerManager_onPlayerJoined(PlayerInput obj)
-	//{
-	//	Debug.Log(obj.name + " joined");
-	//	throw new System.NotImplementedException();
-	//}
-
-	//private void PlayerManager_onPlayerLeft(PlayerInput obj)
-	//{
-	//	Debug.Log(obj.name + " left");
-	//	throw new System.NotImplementedException();
-	//}
-
-	private void Player_onActionTriggered(InputAction.CallbackContext obj)
+	private void Input_onActionTriggered(InputAction.CallbackContext obj)
 	{
-		Debug.Log("action triggered");
-		Debug.Log(obj.action);
-	}
-
-	private void AddPlayerToList()
-	{
-
-	}
-
-	private void OnFire()
-	{
-		Debug.Log(gameObject.name + ": SwitchRounds OnFire");
+		Debug.Log("input action triggered");
+		Debug.Log(obj.valueType);
 		SwitchPlayer();
-	}
-
-	private void OnMove()
-	{
-		Debug.Log(gameObject.name + ": SwitchRounds OnMove");
-		SwitchPlayer();
+		// TODO this should check if a final turn action was performed and switch player
+		//throw new System.NotImplementedException();
 	}
 
 	private void SwitchPlayer()
@@ -63,7 +54,7 @@ public class SwitchRounds : MonoBehaviour
 
 		for (int i = 0; i < playerInputs.Count; i++)
 		{
-			if (previousWasEnabled)
+			if (previousWasEnabled && !switchedOneOn)
 			{
 				playerInputs[i].enabled = true;
 				previousWasEnabled = false;
